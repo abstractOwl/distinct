@@ -48,9 +48,9 @@ def naive(ctx):
 
 
 @cli.command()
-@click.option("--table-size", default=100, type=click.INT)
+@click.option("--capacity", default=100, type=click.INT)
 @click.pass_context
 @log_timing
-def cvm(ctx, table_size: int):
+def cvm(ctx, capacity: int):
     ctx.ensure_object(dict)
-    return list(CountDistinct.cvm(ctx.obj["data"]))[-1]
+    return list(CountDistinct.cvm(ctx.obj["data"], capacity=capacity))[-1]
